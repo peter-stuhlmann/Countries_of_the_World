@@ -6,7 +6,20 @@ html {
 body {
     background-image: url('../img/background.jpg');
     background-size: auto;
-    font-size: 16px
+    font-size: 16px;
+    margin: 0
+}
+
+header {
+    background-color: $secondaryColor;
+    padding: $padding;
+    margin-bottom: calc(#{$margin} * 3);
+
+    .wrap {
+        width: 100%;
+        max-width: $desktop;
+        margin: 0 auto
+    }
 }
 
 main {
@@ -18,6 +31,7 @@ main {
 
 .flag {
     margin-top: $margin;
+
     img {
         width: 100%;
         max-width: 200px;
