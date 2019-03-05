@@ -1,0 +1,45 @@
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+body {
+  background-image: url("../img/background.jpg");
+  background-size: auto;
+  font-size: 16px; }
+
+main {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  min-height: 100%; }
+
+footer {
+  width: 100%;
+  margin: 0 auto;
+  text-align: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+a {
+  color: #000;
+  text-decoration: none;
+  padding: calc(15px / 4) calc(15px / 1.5);
+  transition: 0.2s; }
+  a:hover {
+    opacity: 0.7; }
+
+li {
+  display: inline; }
+  li::after {
+    content: "|";
+    font-size: 1.3em;
+    z-index: 2;
+    font-weight: normal; }
+  li:last-child {
+    margin-right: 15px; }
+    li:last-child:last-child::after {
+      display: none; }
+
+/*# sourceMappingURL=style.css.map */

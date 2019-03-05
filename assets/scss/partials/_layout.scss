@@ -1,0 +1,57 @@
+html {
+    height: 100%;
+    box-sizing: border-box
+}
+
+body {
+    background-image: url('../img/background.jpg');
+    background-size: auto;
+    font-size: 16px
+}
+
+main {
+    width: 100%;
+    max-width: $desktop;
+    margin: 0 auto;
+    min-height: 100%
+}
+
+footer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+a {
+    color: $primaryColor;
+    text-decoration: none;
+    padding: calc(#{$padding} / 4) calc(#{$padding} / 1.5);
+    transition: 0.2s;
+
+    &:hover {
+        opacity: 0.7
+    }
+}
+
+li {
+    display: inline;
+
+    &::after {
+        content: "|";
+        font-size: 1.3em;
+        z-index: 2;
+        font-weight: normal
+    }
+
+    &:last-child {
+        margin-right: $margin;
+
+        &:last-child::after {
+            display: none
+        }
+    }
+}
