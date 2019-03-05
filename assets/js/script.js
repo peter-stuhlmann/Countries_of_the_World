@@ -12,8 +12,9 @@ function countries() {
 
                 countries.push(`
                 <h2>${country[0].name} (${country[0].alpha2Code})</h2>
-                <div>${country[0].name} <i>(in ${country[0].languages[0].name}: "${country[0].nativeName}")</i> is a country in ${country[0].subregion}. The capital is ${country[0].capital}. ${country[0].name} has about ${country[0].population} inhabitants.</div>
-                <div class="flag"><img src="${country[0].flag}"></div> 
+                <p><strong>${country[0].name}</strong> <i>(in ${country[0].languages[0].name}: "${country[0].nativeName}")</i>, officially the <strong>${country[0].altSpellings[1]}</strong> is a country in ${country[0].subregion}. The capital is ${country[0].capital}. ${country[0].name} has about ${country[0].population} inhabitants and covers an area of ${country[0].area} square kilometres. </p>
+                <div class="flag"><img src="${country[0].flag}"><br>
+                <i>Flag of ${country[0].name}.</i></div> 
             `)
 
                 document.querySelector('#country').innerHTML = countries.join('')
