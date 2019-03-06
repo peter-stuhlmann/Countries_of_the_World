@@ -11,7 +11,10 @@ function countries() {
         .then(
             country => {
                 if (country.status == 404) {
-                    document.querySelector('#country').innerHTML = country.status
+                    document.querySelector('#country').innerHTML = `
+                        Sorry, the calling code you entered does not exist.
+                        <div class="flag"><img alt="404" src="assets/img/404.png">
+                    `
                 } else {
 
                     let countries = [];
