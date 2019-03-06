@@ -2,7 +2,7 @@
 
 function countries() {
 
-    let inputCountry = document.querySelector('#country-input').value || '49'
+    let inputCountry = document.querySelector('#country-input').value || '1'
 
     fetch(`https://restcountries.eu/rest/v2/callingcode/${inputCountry}`)
         .then(
@@ -11,21 +11,25 @@ function countries() {
         .then(
             country => {
                 let countries = [];
+                
+                console.log(country)
+                
+                for(let i = 0; i < country.length; i++) {
 
-                let officialName = ""
+                let alternateName = ""
 
-                if (country[0].altSpellings[1] !== undefined) {
-                    officialName = `, officially the <strong>${country[0].altSpellings[1]}</strong>`
+                if (country[i].altSpellings[1] !== undefined) {
+                    alternateName = ` or also the <strong>${country[i].altSpellings[1]}</strong>`
                 } else {
-                    officialName = ""
+                    alternateName = ""
                 }
 
                 countries.push(`
-                <h2>${country[0].name} (${country[0].alpha2Code})</h2>
-                <p><strong>${country[0].name}</strong> <i>(in ${country[0].languages[0].name}: "${country[0].nativeName}")</i>${officialName} is a country in ${country[0].subregion}. The capital is ${country[0].capital}. ${country[0].name} has about ${country[0].population} inhabitants and covers an area of ${country[0].area} square kilometres. </p>
-                <div class="flag"><img src="${country[0].flag}"><br>
-                <i>Flag of ${country[0].name}.</i></div> 
-            `)
+                    <h2>${country[i].name} (${country[i].alpha2Code})</h2>
+                    <p><strong>${country[i].name}</strong> <i>(in ${country[i].languages[0].name}: "${country[i].nativeName}")</i>${alternateName} is a country in ${country[i].subregion}. The capital is ${country[i].capital}. ${country[i].name} has about ${country[i].population} inhabitants and covers an area of ${country[i].area} square kilometres. </p>
+                    <div class="flag"><img src="${country[i].flag}"><br>
+                    <i>Flag of ${country[i].name}.</i></div> 
+                `)}
 
                 document.querySelector('#country').innerHTML = countries.join('')
             }
