@@ -25,10 +25,12 @@ function countries() {
                 }
 
                 countries.push(`
+                    <div class="country">
                     <h2>${country[i].name} (${country[i].alpha2Code})</h2>
                     <p><strong>${country[i].name}</strong> <i>(in ${country[i].languages[0].name}: "${country[i].nativeName}")</i>${alternateName} is a country in ${country[i].subregion}. The capital is ${country[i].capital}. ${country[i].name} has about ${country[i].population} inhabitants and covers an area of ${country[i].area} square kilometres. </p>
                     <div class="flag"><img src="${country[i].flag}"><br>
                     <i>Flag of ${country[i].name}.</i></div> 
+                    </div>
                 `)}
 
                 document.querySelector('#country').innerHTML = countries.join('')
