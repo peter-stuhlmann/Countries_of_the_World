@@ -10,30 +10,34 @@ function countries() {
         )
         .then(
             country => {
-                let countries = [];
-                
-                console.log(country)
-                
-                for(let i = 0; i < country.length; i++) {
-
-                let alternateName = ""
-
-                if (country[i].altSpellings[1] !== undefined) {
-                    alternateName = ` or also the <strong>${country[i].altSpellings[1]}</strong>`
+                if (country.status == 404) {
+                    document.querySelector('#country').innerHTML = country.status
                 } else {
-                    alternateName = ""
+
+                    let countries = [];
+
+                    for (let i = 0; i < country.length; i++) {
+
+                        let alternateName = ""
+
+                        if (country[i].altSpellings[1] !== undefined) {
+                            alternateName = ` or also the <strong>${country[i].altSpellings[1]}</strong>`
+                        } else {
+                            alternateName = ""
+                        }
+
+                        countries.push(`
+                            <div class="country">
+                            <h2>${country[i].name} (${country[i].alpha2Code})</h2>
+                            <p><strong>${country[i].name}</strong> <i>(in ${country[i].languages[0].name}: "${country[i].nativeName}")</i>${alternateName} is a country in ${country[i].subregion}. The capital is ${country[i].capital}. ${country[i].name} has about ${country[i].population} inhabitants and covers an area of ${country[i].area} square kilometres. </p>
+                            <div class="flag"><img src="${country[i].flag}"><br>
+                            <i>Flag of ${country[i].name}.</i></div> 
+                            </div>
+                        `)
+                    }
+
+                    document.querySelector('#country').innerHTML = countries.join('')
                 }
-
-                countries.push(`
-                    <div class="country">
-                    <h2>${country[i].name} (${country[i].alpha2Code})</h2>
-                    <p><strong>${country[i].name}</strong> <i>(in ${country[i].languages[0].name}: "${country[i].nativeName}")</i>${alternateName} is a country in ${country[i].subregion}. The capital is ${country[i].capital}. ${country[i].name} has about ${country[i].population} inhabitants and covers an area of ${country[i].area} square kilometres. </p>
-                    <div class="flag"><img src="${country[i].flag}"><br>
-                    <i>Flag of ${country[i].name}.</i></div> 
-                    </div>
-                `)}
-
-                document.querySelector('#country').innerHTML = countries.join('')
             }
         )
         .catch(
