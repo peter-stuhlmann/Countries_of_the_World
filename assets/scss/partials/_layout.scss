@@ -32,6 +32,10 @@ main {
     box-sizing: border-box
 }
 
+#country-input {
+    width: 200px
+}
+
 .country {
     margin-bottom: calc(#{$margin} * 5)
 }

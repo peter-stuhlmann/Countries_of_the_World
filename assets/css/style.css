@@ -26,6 +26,9 @@ main {
   padding: 15px;
   box-sizing: border-box; }
 
+#country-input {
+  width: 200px; }
+
 .country {
   margin-bottom: calc(15px * 5); }
 
