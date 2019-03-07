@@ -14,13 +14,14 @@ body {
 
 header {
     background-color: $secondaryColor;
-    padding: $padding;
     margin-bottom: calc(#{$margin} * 3);
 
     .wrap {
         width: 100%;
         max-width: $desktop;
-        margin: 0 auto
+        margin: 0 auto;
+        padding: $padding;
+        box-sizing: border-box
     }
 }
 
