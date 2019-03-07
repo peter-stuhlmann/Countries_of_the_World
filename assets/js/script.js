@@ -39,7 +39,7 @@ function countries() {
                         `)
                     }
 
-                    document.querySelector('#country').innerHTML = countries.join('')
+                    document.querySelector('#country').innerHTML = `<strong>The results for callingcode +` + inputCountry + `</strong>` + countries.join('')
                 }
             }
         )
