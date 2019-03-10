@@ -2,9 +2,18 @@
 
 function countries() {
 
-    let inputCountry = document.querySelector('#country-input').value || '1'
+    let inputCallingCode = document.querySelector('#callingcode-input').value || `1`
+    let inputCountry = document.querySelector('#country-input').value
 
-    fetch(`https://restcountries.eu/rest/v2/callingcode/${inputCountry}`)
+    let fetchURL
+
+    if (inputCountry == "") {
+        fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
+    } else {
+        fetchURL = `https://restcountries.eu/rest/v2/name/${inputCountry}`
+    }
+
+    fetch(fetchURL)
         .then(
             response => response.json()
         )
@@ -39,7 +48,7 @@ function countries() {
                         `)
                     }
 
-                    document.querySelector('#country').innerHTML = `<strong>The results for callingcode +` + inputCountry + `</strong>` + countries.join('')
+                    document.querySelector('#country').innerHTML = `<strong>The results for callingcode +` + inputCallingCode + `</strong>` + countries.join('')
                 }
             }
         )
@@ -54,7 +63,7 @@ document.querySelector('#country-input-button').addEventListener('click', countr
 
 // 'Enter' instead of button click
 
-document.querySelector('#country-input').addEventListener('keypress', function (e) {
+document.querySelector('#callingcode-input').addEventListener('keypress', function (e) {
     if (e.keyCode === 13) {
         countries()
     }
