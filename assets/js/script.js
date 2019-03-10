@@ -68,3 +68,9 @@ document.querySelector('#callingcode-input').addEventListener('keypress', functi
         countries()
     }
 });
+
+document.querySelector('#country-input').addEventListener('keypress', function (e) {
+    if (e.keyCode === 13) {
+        countries()
+    }
+});
