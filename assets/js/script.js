@@ -2,15 +2,24 @@
 
 function countries() {
 
-    let inputCallingCode = document.querySelector('#callingcode-input').value || `1`
+    let inputCallingCode = document.querySelector('#callingcode-input').value
     let inputCountry = document.querySelector('#country-input').value
+    let search = inputCallingCode || inputCountry
 
     let fetchURL
 
-    if (inputCountry == "") {
+    if (inputCallingCode !== "") {
+        inputCountry = ""
         fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
-    } else {
+    } else if (inputCountry !== "") {
+        inputCallingCode = ""
         fetchURL = `https://restcountries.eu/rest/v2/name/${inputCountry}`
+    } else if (inputCallingCode && inputCountry !== "") {
+        alert('Eyyy')
+    } else {
+        inputCallingCode = `1`
+        inputCountry = ""
+        fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
     }
 
     fetch(fetchURL)
@@ -48,7 +57,7 @@ function countries() {
                         `)
                     }
 
-                    document.querySelector('#country').innerHTML = `<strong>The results for callingcode +` + inputCallingCode + `</strong>` + countries.join('')
+                    document.querySelector('#country').innerHTML = `<strong>The results for callingcode +` + search + `</strong>` + countries.join('')
                 }
             }
         )
