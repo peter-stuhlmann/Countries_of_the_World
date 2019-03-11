@@ -19,6 +19,7 @@ function countries() {
     } else {
         inputCallingCode = `1`
         inputCountry = ""
+        search = ""
         fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
     }
     
