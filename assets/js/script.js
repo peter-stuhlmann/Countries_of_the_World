@@ -4,15 +4,17 @@ function countries() {
 
     let inputCallingCode = document.querySelector('#callingcode-input').value
     let inputCountry = document.querySelector('#country-input').value
-    let search = inputCallingCode || inputCountry
 
     let fetchURL
+    let search
 
     if (inputCallingCode !== "") {
         inputCountry = ""
+        search = `<strong>The results for callingcode '+${inputCallingCode}'</strong>`
         fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
     } else if (inputCountry !== "") {
         inputCallingCode = ""
+        search = `<strong>The results for '${inputCountry}'</strong>`
         fetchURL = `https://restcountries.eu/rest/v2/name/${inputCountry}`
     } else if (inputCallingCode && inputCountry !== "") {
         alert('Eyyy')
@@ -21,7 +23,7 @@ function countries() {
         inputCountry = ""
         fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
     }
-
+    
     fetch(fetchURL)
         .then(
             response => response.json()
@@ -57,13 +59,16 @@ function countries() {
                         `)
                     }
 
-                    document.querySelector('#country').innerHTML = `<strong>The results for callingcode +` + search + `</strong>` + countries.join('')
+                    document.querySelector('#country').innerHTML = search + countries.join('')
                 }
             }
         )
         .catch(
             err => console.log(`Error: ${err}`)
         )
+
+    document.querySelector('#callingcode-input').value = ""
+    document.querySelector('#country-input').value = ""
 }
 
 countries()
