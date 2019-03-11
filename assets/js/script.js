@@ -16,8 +16,6 @@ function countries() {
         inputCallingCode = ""
         search = `<strong>The results for '${inputCountry}'</strong>`
         fetchURL = `https://restcountries.eu/rest/v2/name/${inputCountry}`
-    } else if (inputCallingCode && inputCountry !== "") {
-        alert('Eyyy')
     } else {
         inputCallingCode = `1`
         inputCountry = ""
