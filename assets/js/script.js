@@ -17,10 +17,10 @@ function countries() {
         search = `<strong>The results for '${inputCountry}'</strong>`
         fetchURL = `https://restcountries.eu/rest/v2/name/${inputCountry}`
     } else {
-        inputCallingCode = `1`
+        inputCallingCode = ""
         inputCountry = ""
         search = ""
-        fetchURL = `https://restcountries.eu/rest/v2/callingcode/${inputCallingCode}`
+        fetchURL = `https://restcountries.eu/rest/v2/all`
     }
     
     fetch(fetchURL)
